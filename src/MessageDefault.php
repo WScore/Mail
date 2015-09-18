@@ -63,7 +63,7 @@ class MessageDefault
     /**
      * @param string $from_mail
      * @param string $name
-     * @return $this
+     * @return $this|MessageDefault
      */
     public function withFrom($from_mail, $name=null)
     {
@@ -74,7 +74,7 @@ class MessageDefault
 
     /**
      * @param string $path
-     * @return $this
+     * @return $this|MessageDefault
      */
     public function withReturnPath($path)
     {
@@ -86,9 +86,9 @@ class MessageDefault
     /**
      * @param string $reply_mail
      * @param string $name
-     * @return $this
+     * @return $this|MessageDefault
      */
-    public function setReplyTo($reply_mail, $name=null)
+    public function withReplyTo($reply_mail, $name=null)
     {
         $self = clone($this);
         $self->reply_to = [$reply_mail, $name];
@@ -101,7 +101,7 @@ class MessageDefault
      * @param string $type     type of header: text, date, and else?
      * @return $this
      */
-    public function setHeader($name, $value, $type='text')
+    public function withHeader($name, $value, $type='text')
     {
         $self = clone($this);
         $self->headers[] = [$name, $value, $type];
@@ -113,10 +113,10 @@ class MessageDefault
      * @see
      * https://support.google.com/mail/answer/81126
      *
-     * @return MessageDefault
+     * @return $this|MessageDefault
      */
-    public function setBulk()
+    public function withBulk()
     {
-        return $this->setHeader('Precedence', 'bulk');
+        return $this->withHeader('Precedence', 'bulk');
     }
 }
