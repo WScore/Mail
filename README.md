@@ -30,7 +30,7 @@ $mailer->sendText('hello world', function(Swift_Message $message) {
 
 ### Message Default
 
-You can create a `MessageDefault` object to set a default message in `Mailer`. Or, just use a closure as MessageDefault. 
+You can create a `MessageDefault` object to set a default message in `Mailer`. The methods in `MessageDefault` objects, which start with `with`, are immutable call. 
 
 ```php
 // somewhere in a config file. 
@@ -51,6 +51,9 @@ $mailer->sendHtml('<h1>hi</h1>', function(Swift_Message $message) {
     $message->setTo('to@example.com');
 });
 ```
+
+> Or, just use a closure as MessageDefault. 
+
 
 ### Japanese ISO-2022
 
