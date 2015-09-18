@@ -1,0 +1,15 @@
+{
+  "name": "wscore/mail",
+  "description": "mail related package",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Asao Kamei",
+      "email": "kamei@workspot.jp"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+  }
+}
