@@ -30,10 +30,19 @@ class Mailer
     }
 
     /**
+     * @param Swift_Transport $transport
+     * @return Mailer
+     */
+    public static function newInstance($transport)
+    {
+        return new self($transport);
+    }
+
+    /**
      * @param Closure|MessageDefault $default
      * @return $this
      */
-    public function setDefault($default)
+    public function setMessageDefault($default)
     {
         $this->message_default = $default;
         return $this;

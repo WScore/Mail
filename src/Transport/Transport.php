@@ -78,7 +78,7 @@ class Transport
      * @param DumbSpool $spool
      * @return Swift_SpoolTransport
      */
-    public static function forgeDumb(&$spool)
+    public static function forgeDumb(&$spool = null)
     {
         $spool = new DumbSpool();
         return Swift_SpoolTransport::newInstance($spool);

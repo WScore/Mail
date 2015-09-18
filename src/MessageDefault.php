@@ -26,6 +26,21 @@ class MessageDefault
     public $headers = [];
 
     /**
+     *
+     */
+    public function __construct()
+    {
+    }
+
+    /**
+     * @return MessageDefault
+     */
+    public static function newInstance()
+    {
+        return new self();
+    }
+
+    /**
      * @param Swift_Message $message
      */
     public function __invoke($message)
@@ -50,20 +65,22 @@ class MessageDefault
      * @param string $name
      * @return $this
      */
-    public function setFrom($from_mail, $name=null)
+    public function withFrom($from_mail, $name=null)
     {
-        $this->from = [$from_mail, $name];
-        return $this;
+        $self = clone($this);
+        $self->from = [$from_mail, $name];
+        return $self;
     }
 
     /**
      * @param string $path
      * @return $this
      */
-    public function setReturnPath($path)
+    public function withReturnPath($path)
     {
-        $this->return_path = $path;
-        return $this;
+        $self = clone($this);
+        $self->return_path = $path;
+        return $self;
     }
 
     /**
@@ -73,8 +90,9 @@ class MessageDefault
      */
     public function setReplyTo($reply_mail, $name=null)
     {
-        $this->reply_to = [$reply_mail, $name];
-        return $this;
+        $self = clone($this);
+        $self->reply_to = [$reply_mail, $name];
+        return $self;
     }
 
     /**
@@ -85,12 +103,15 @@ class MessageDefault
      */
     public function setHeader($name, $value, $type='text')
     {
-        $this->headers[] = [$name, $value, $type];
-        return $this;
+        $self = clone($this);
+        $self->headers[] = [$name, $value, $type];
+        return $self;
     }
 
     /**
-     * set for bulk mail.
+     * set for bulk mail. not sure how helpful this is.
+     * @see
+     * https://support.google.com/mail/answer/81126
      *
      * @return MessageDefault
      */
