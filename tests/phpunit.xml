@@ -15,4 +15,13 @@
             <directory>Swift</directory>
         </testsuite>
     </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">../src</directory>
+            <exclude>
+                <file>../vendor/</file>
+            </exclude>
+        </whitelist>
+    </filter>
+
 </phpunit>
